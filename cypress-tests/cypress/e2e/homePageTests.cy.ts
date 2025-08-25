@@ -25,9 +25,13 @@ homePage.verifySearchElements()
 })
 
 describe('Ověří vyhledávání', () => {
+  beforeEach(() => {
+    cy.visit('/')
+    cy.get('a[class*="CaSaveAll"]').click()
+  });
     it('Ověří funkčnost a správnost vyhledávání', () => {
         menuComponent.getSearchButton().click()
         menuComponent.getSearchField().type('iPhone')
-        menuComponent.getSearchButton().click()
+        menuComponent.getSearchConfirmButton().click()
     });
 });

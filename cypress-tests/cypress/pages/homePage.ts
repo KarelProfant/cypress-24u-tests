@@ -31,10 +31,13 @@ getFooter = () => cy.get('footer')
   }
 
   verifySearchElements(){
-      menuComponent.getSearchButton().click()
+  menuComponent.getSearchBar().should('have.attr', 'class').and('not.contain', 'show')
+  menuComponent.getSearchButton().click()
+  menuComponent.getSearchBar().should('have.attr', 'class').and('contain', 'show')
   menuComponent.getSearchField().should('be.visible')
   menuComponent.getSearchConfirmButton().should('be.visible')
   menuComponent.getSearchButton().click()
+  menuComponent.getSearchBar().should('have.attr', 'class').and('not.contain', 'show')
   menuComponent.getSearchField().should('not.be.visible')
   menuComponent.getSearchConfirmButton().should('not.be.visible')
   }
