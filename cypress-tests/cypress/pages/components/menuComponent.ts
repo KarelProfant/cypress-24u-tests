@@ -1,35 +1,18 @@
-import categoryPage from "../CategoryPage"
-import menuCategoryComponent, { menuCategories } from "./menuCategoryComponent"
-
 export default new class MenuComponent {
+    getMenuBar = () => cy.get('header')
     getLogoPicture = () => cy.get('img[class*="img-logo"]')
-    getSearchButton = () => cy.get('i[class*="fa-search"]')
+    getSearchButton = () => cy.get('a[class*="HdrSrch"]')
+    getSearchField = () => cy.get('input[class*="frmsearchForm-phrase"]')
+    getSearchConfirmButton = () => cy.get('button[class*="frmsearchForm-search"]')
     getCartButton = () => cy.get('i[class*="fa-shopping-cart"]')
-    getCartBadge = () => cy.get('span[class*="BasketTotalQuantity"]')
-    getMenuButton = () => cy.get('i[class*="fa-bars"]')
+    getCartBadge = () => cy.get('span[class*="badge-toggle"]')
+    getCategoriesButton = () => cy.get('i[class*="fa-bars"]')
 
-    openMenu(){
-        this.getMenuButton().click()
+    openCategories(){
+        this.getCategoriesButton().click()
     }
 
     navigateToHome() {
         this.getLogoPicture().click()
-    }
-
-    checkCartBadge(badgeNumber: number): boolean {
-        if (this.getCartBadge().should('contain.text', badgeNumber)) {
-            return true
-        }
-        return false
-    }
-
-    validMenuComponent() {
-        this.getLogoPicture().should('exist')
-        this.getSearchButton().should('exist')
-        this.getCartButton().should('exist')
-        expect(this.checkCartBadge(0)).to.be.true
-        this.getMenuButton().should('exist')
-        menuCategoryComponent.navigateToCategory(menuCategories.AKCE)
-        categoryPage.getHeaderText().contains(String(menuCategories.AKCE))
     }
 }
