@@ -1,8 +1,8 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
-    projectId: "oxj3dr",
   e2e: {
+    projectId: "oxj3dr",
     watchForFileChanges: false,
     baseUrl: "https://obchod.24u.cz/",
     setupNodeEvents(on, config) {
