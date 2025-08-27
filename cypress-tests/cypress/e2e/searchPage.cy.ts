@@ -12,7 +12,7 @@ describe('SearchPage tests', () => {
                 .should('exist')
                 .and('be.visible')
                 .and('contain.text', data.searchItems)
-            cy.url().should('have.text', `https://obchod.24u.cz/search?phrase=${data.searchItems}`)
+            cy.url().should('have', `https://obchod.24u.cz/search?phrase=${data.searchItems}`)
         })
     });
 });
