@@ -1,4 +1,5 @@
 export default new class RegistrationPage {
+    getTitle = () => cy.get('h1')
     getNameField = () => cy.get('input[id="frmcustomerRegistrationForm-firstname"]')
     getSurnameField = () => cy.get('input[id="frmcustomerRegistrationForm-surname"]')
     getStreetField = () => cy.get('input[id="frmcustomerRegistrationForm-invoice_street"]')

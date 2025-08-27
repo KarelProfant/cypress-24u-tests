@@ -10,7 +10,10 @@ describe('Registration tests', () => {
     });
 
     it('Zkontroluje, že odkaz v menu směřuje na správnou URL', () => {
-        cy.url().should('contain', 'registration')
+        registrationPage.getTitle()
+        .should('exist')
+        .and('be.visible')
+        .and('contain.text', 'Vytvořit účet')
     });
 
     it('Po vyplnění nevalidního e-mailu by se měla objevit chybová hláška', () => {
@@ -18,12 +21,12 @@ describe('Registration tests', () => {
             const credentialsNotComplete: RegistrationData = {
                 name: fakerCS_CZ.person.firstName(),
                 surname: fakerCS_CZ.person.lastName(),
-                street: fakerCS_CZ.location.street(),
+                street: fakerCS_CZ.location.streetAddress(),
                 city: fakerCS_CZ.location.city(),
                 ZIP: fakerCS_CZ.location.zipCode(),
                 country: Countries.cz,
-                email: "blabla@nevalid.cy",
-                phone: fakerCS_CZ.phone.number()
+                email: data.emailInvalid,
+                phone: fakerCS_CZ.phone.number({style: "international"})
             }
             registrationPage.fillRegistrationData(credentialsNotComplete)
             registrationPage.getBadDomainAlert()
@@ -36,12 +39,12 @@ describe('Registration tests', () => {
         const credentialsComplete: RegistrationData = {
             name: fakerCS_CZ.person.firstName(),
             surname: fakerCS_CZ.person.lastName(),
-            street: fakerCS_CZ.location.street(),
+            street: fakerCS_CZ.location.streetAddress(),
             city: fakerCS_CZ.location.city(),
             ZIP: fakerCS_CZ.location.zipCode(),
             country: Countries.cz,
             email: fakerCS_CZ.internet.email(),
-            phone: fakerCS_CZ.phone.number()
+            phone: fakerCS_CZ.phone.number({style: "international"})
         }
         registrationPage.fillRegistrationData(credentialsComplete)
         registrationPage.getSaveButton().click()
