@@ -12,8 +12,13 @@ describe('Testy na vyhledávací stránku', () => {
                 .should('exist')
                 .and('be.visible')
                 .and('contain.text', data.searchItems)
-            cy.url().should('eq', `https://obchod.24u.cz/search?phrase=${data.searchItems}`)
-            searchPage.checkSearchCategories(data.searchItems)
+            cy.url().should('eq', `${Cypress.env('baseUrl')}search?phrase=${data.searchItems}`)
+            searchPage.getCategoriesDivs().each((categoryDiv) => {
+                expect(categoryDiv).contain(data.searchItems)
+            });
+            searchPage.getProductsTitle().each((productTitle) => {
+                expect(productTitle).contain(data.searchItems)
+            });
         })
     });
 });
