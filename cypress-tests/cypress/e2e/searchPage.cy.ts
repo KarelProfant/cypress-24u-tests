@@ -1,3 +1,5 @@
+import searchPage from "../pages/searchPage";
+
 describe('SearchPage tests', () => {
     beforeEach(() => {
         cy.visit('/')
@@ -6,6 +8,10 @@ describe('SearchPage tests', () => {
     it('Ověří, že po zadání klíčového slova se web přesměruje na správný web a zobrazí relevantní výsledky', () => {
         cy.fixture('data.json').then((data) => {
             cy.searchProducts(data.searchItems)
+            searchPage.getTitle()
+                .should('exist')
+                .and('be.visible')
+                .and('contain.text', data.searchItems)
             cy.url().should('have.text', `https://obchod.24u.cz/search?phrase=${data.searchItems}`)
         })
     });
