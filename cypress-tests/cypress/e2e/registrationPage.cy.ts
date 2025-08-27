@@ -5,7 +5,7 @@ import { faker, fakerCS_CZ } from '@faker-js/faker';
 describe('Testy na registrační stránce', () => {
     beforeEach(() => {
         cy.visit('/')
-        cy.get('a[class*="CaSaveAll"]').click()
+        cy.get('a[class*="CaSaveAll"]').click({force: true})
         menuComponent.openRegisterPage()
     });
 
