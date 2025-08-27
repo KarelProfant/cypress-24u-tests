@@ -1,4 +1,7 @@
 /// <reference types="cypress" />
+
+import menuComponent from "../pages/components/menuComponent"
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
@@ -25,13 +28,20 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+Cypress.Commands.add('searchProducts', (searchString: string) => {
+    menuComponent.getSearchButton().click()
+    menuComponent.getSearchField().type(searchString)
+    menuComponent.getSearchConfirmButton().click()
+})
+export { }
+declare global {
+    namespace Cypress {
+        interface Chainable {
+            searchProducts(searchString: string): Chainable<void>
+            //       login(email: string, password: string): Chainable<void>
+            //       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+            //       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+            //       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
+        }
+    }
+}

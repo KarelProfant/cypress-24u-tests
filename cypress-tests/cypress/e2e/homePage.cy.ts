@@ -20,18 +20,5 @@ describe('Ověření prvků na domovské stránce', () => {
 
   it('Ověří rozbalení vyhledávání, přítomnost vyhledávacího pole a tlačítka, a zabalení vyhledávání', () => {
     homePage.verifySearchElements()
-
   });
 })
-
-describe('Ověří vyhledávání', () => {
-  beforeEach(() => {
-    cy.visit('/')
-    cy.get('a[class*="CaSaveAll"]').click()
-  });
-  it('Ověří funkčnost a správnost vyhledávání', () => {
-    menuComponent.getSearchButton().click()
-    menuComponent.getSearchField().type('iPhone')
-    menuComponent.getSearchConfirmButton().click()
-  });
-});
