@@ -6,20 +6,20 @@ describe('Ověření prvků na domovské stránce', () => {
     cy.visit('/')
     cy.get('a[class*="CaSaveAll"]').click()
   });
-  
+
   it('Ověří přítomnost klíčových prvků na domovské stránce', () => {
     homePage.verifyHomePageElements()
   })
 
   it('Ověří zobrazení nabídky Category Menu a hlavních titles', () => {
-      homePage.verifyCategoriesContains([
-        menuCategories.AKCE,
-        menuCategories.BACK_TO_SCHOOL
-      ], 10)
+    homePage.verifyCategoriesContains([
+      menuCategories.AKCE,
+      menuCategories.BACK_TO_SCHOOL
+    ], 10)
   });
 
-    it('Ověří rozbalení vyhledávání, přítomnost vyhledávacího pole a tlačítka, a zabalení vyhledávání', () => {
-homePage.verifySearchElements()
+  it('Ověří rozbalení vyhledávání, přítomnost vyhledávacího pole a tlačítka, a zabalení vyhledávání', () => {
+    homePage.verifySearchElements()
 
   });
 })
@@ -29,9 +29,9 @@ describe('Ověří vyhledávání', () => {
     cy.visit('/')
     cy.get('a[class*="CaSaveAll"]').click()
   });
-    it('Ověří funkčnost a správnost vyhledávání', () => {
-        menuComponent.getSearchButton().click()
-        menuComponent.getSearchField().type('iPhone')
-        menuComponent.getSearchConfirmButton().click()
-    });
+  it('Ověří funkčnost a správnost vyhledávání', () => {
+    menuComponent.getSearchButton().click()
+    menuComponent.getSearchField().type('iPhone')
+    menuComponent.getSearchConfirmButton().click()
+  });
 });
