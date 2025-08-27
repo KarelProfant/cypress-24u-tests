@@ -2,7 +2,7 @@ import menuComponent from "../pages/components/menuComponent";
 import registrationPage, { Countries, RegistrationData } from "../pages/registrationPage";
 import { faker, fakerCS_CZ } from '@faker-js/faker';
 
-describe('Registration tests', () => {
+describe('Testy na registrační stránce', () => {
     beforeEach(() => {
         cy.visit('/')
         cy.get('a[class*="CaSaveAll"]').click()
