@@ -1,6 +1,6 @@
 import menuCategoryComponent from "../pages/components/menuCategoryComponent";
-import menuComponent from "../pages/components/menuComponent";
-import homePage, { menuCategories } from "../pages/homePage";
+import menuComponent, { menuCategories } from "../pages/components/menuComponent";
+import homePage from "../pages/homePage";
 
 describe('Ověření prvků na domovské stránce', () => {
   beforeEach(() => {
