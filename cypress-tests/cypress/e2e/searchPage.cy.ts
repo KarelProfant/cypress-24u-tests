@@ -3,7 +3,7 @@ import searchPage from "../pages/searchPage";
 describe('Testy na vyhledávací stránku', () => {
     beforeEach(() => {
         // Arrange
-        cy.visit('/')
+        cy.visit('/', {timeout: 60000})
         cy.get('a[class*="CaSaveAll"]').click({force: true})
     });
     it('Ověří, že po zadání klíčového slova se web přesměruje na správný web a zobrazí relevantní výsledky', () => {

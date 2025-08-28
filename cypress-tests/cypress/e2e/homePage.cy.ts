@@ -5,7 +5,7 @@ import homePage from "../pages/homePage";
 describe('Ověření prvků na domovské stránce', () => {
   beforeEach(() => {
     // Arrange
-    cy.visit('/')
+    cy.visit('/', {timeout: 60000})
     cy.get('a[class*="CaSaveAll"]').click()
   });
 

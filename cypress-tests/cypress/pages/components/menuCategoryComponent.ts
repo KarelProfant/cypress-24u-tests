@@ -1,5 +1,4 @@
-import { menuCategories } from "../homePage"
-import menuComponent from "./menuComponent"
+import menuComponent, { menuCategories } from "./menuComponent"
 
 export default new class MenuCategoryComponent {
     menuItemsWrapper = () => cy.get('ul[class*="Menu ReOpenMenu"]')

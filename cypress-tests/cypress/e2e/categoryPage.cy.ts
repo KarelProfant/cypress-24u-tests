@@ -9,7 +9,7 @@ import { Countries } from "../pages/registrationPage";
 describe('Testy na vytváření objednávek ze stránky kategorie', () => {
     beforeEach(() => {
         // Arrange
-        cy.visit('/')
+        cy.visit('/', {timeout: 60000})
         cy.get('a[class*="CaSaveAll"]').click({ force: true })
         // Act
         menuComponent.openCategoryPage(menuCategories.IPHONE)
@@ -33,7 +33,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
             cy.intercept('GET', /https:\/\/obchod.24u.cz\/(.*)\?do=addCart/).as('addCart')
             // Act
             item.addItemToCart()
-            cy.wait('@addCart', { timeout: 30000 }).then((odpoved) => {
+            cy.wait('@addCart', { timeout: 60000 }).then((odpoved) => {
                 // Asset
                 cartPage.getAddedToCartDialog()
                     .should('exist')
@@ -59,7 +59,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
                 .and('be.visible')
                 .and('contain.text', data.itemToCart.name)
             productDetailPage.addItemToCart()
-            cy.wait('@addCart', { timeout: 30000 }).then((odpoved) => {
+            cy.wait('@addCart', { timeout: 60000 }).then((odpoved) => {
                 cartPage.getAddedToCartDialog()
                     .should('exist')
                     .should('be.visible')
@@ -88,7 +88,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
             cy.intercept('GET', /https:\/\/obchod.24u.cz\/(.*)\?do=addCart/).as('addCart')
             // Act
             item.addItemToCart()
-            cy.wait('@addCart', { timeout: 30000 }).then((odpoved) => {
+            cy.wait('@addCart', { timeout: 60000 }).then((odpoved) => {
                 // Act
                 cartPage.getToCartFromDialogButton().click()
                 // Asset
