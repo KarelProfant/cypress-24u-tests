@@ -1,4 +1,9 @@
 {
   "emailInvalid": "blabla@nevalid.cy",
-  "searchItems": "iPhone"
+  "searchItems": "iPhone",
+  "urlPartIphone": "apple-iphone",
+  "itemToCart": {
+    "name": "Apple iPhone 16e 128GB - černý",
+    "price": "16 990 Kč"
+  }
 }

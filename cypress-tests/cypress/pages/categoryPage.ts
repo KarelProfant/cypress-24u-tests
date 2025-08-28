@@ -1,3 +1,3 @@
 export default new class CategoryPage {
-    getHeaderText = () => cy.get('h1')
+    getTitle = () => cy.get('h1')
 }

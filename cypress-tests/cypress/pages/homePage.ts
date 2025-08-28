@@ -8,6 +8,7 @@ export default new class HomePage {
     menuComponent.getMenuBar().should("be.visible")
     menuComponent.getLogoPicture().should("be.visible")
     menuComponent.getSearchButton().should('be.visible')
+    menuComponent.getSearchBar().should('have.attr', 'class').and('not.contain', 'show')
     menuComponent.getCartButton().should('be.visible')
     menuComponent.getCartBadge().should('have.text', '0')
     menuComponent.getCategoriesButton().should('be.visible')
@@ -18,32 +19,4 @@ export default new class HomePage {
     menuCategoryComponent.menuItemsWrapper().should('not.be.visible')
     this.getFooter().should("be.visible")
   }
-
-  verifyCategoriesContains(textArray: menuCategories[], expectedCount?: number) {
-    menuComponent.openCategories()
-    menuCategoryComponent.getCategoryItems()
-      .should("be.visible")
-      .should("have.length.at.least", expectedCount);
-    textArray.forEach((text) => {
-      menuCategoryComponent.getCategoryItems().should("contain.text", text);
-    });
-    menuCategoryComponent.closeCategories()
-  }
-
-  verifySearchElements() {
-    menuComponent.getSearchBar().should('have.attr', 'class').and('not.contain', 'show')
-    menuComponent.getSearchButton().click()
-    menuComponent.getSearchBar().should('have.attr', 'class').and('contain', 'show')
-    menuComponent.getSearchField().should('be.visible')
-    menuComponent.getSearchConfirmButton().should('be.visible')
-    menuComponent.getSearchButton().click()
-    menuComponent.getSearchBar().should('have.attr', 'class').and('not.contain', 'show')
-    menuComponent.getSearchField().should('not.be.visible')
-    menuComponent.getSearchConfirmButton().should('not.be.visible')
-  }
-}
-
-export enum menuCategories {
-  AKCE = 'Akce',
-  BACK_TO_SCHOOL = 'Back to School'
 }

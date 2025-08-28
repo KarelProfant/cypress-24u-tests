@@ -2,12 +2,15 @@ import searchPage from "../pages/searchPage";
 
 describe('Testy na vyhledávací stránku', () => {
     beforeEach(() => {
+        // Arrange
         cy.visit('/')
         cy.get('a[class*="CaSaveAll"]').click({force: true})
     });
     it('Ověří, že po zadání klíčového slova se web přesměruje na správný web a zobrazí relevantní výsledky', () => {
         cy.fixture('data.json').then((data) => {
+            // Act
             cy.searchProducts(data.searchItems)
+            // Asset
             searchPage.getTitle()
                 .should('exist')
                 .and('be.visible')

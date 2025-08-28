@@ -10,8 +10,6 @@ export default defineConfig({
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      //CYPRESS_RECORD_KEY a6002f34-3629-44a0-ac9a-71546454227d
-      //npx cypress run --record --key a6002f34-3629-44a0-ac9a-7154645422
     },
   },
 });
