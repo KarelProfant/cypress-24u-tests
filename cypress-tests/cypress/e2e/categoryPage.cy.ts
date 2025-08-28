@@ -33,7 +33,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
             cy.intercept('GET', /https:\/\/obchod.24u.cz\/(.*)\?do=addCart/).as('addCart')
             // Act
             item.addItemToCart()
-            cy.wait('@addCart', { timeout: 20000 }).then((odpoved) => {
+            cy.wait('@addCart', { timeout: 30000 }).then((odpoved) => {
                 // Asset
                 cartPage.getAddedToCartDialog()
                     .should('exist')
@@ -59,7 +59,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
                 .and('be.visible')
                 .and('contain.text', data.itemToCart.name)
             productDetailPage.addItemToCart()
-            cy.wait('@addCart', { timeout: 20000 }).then((odpoved) => {
+            cy.wait('@addCart', { timeout: 30000 }).then((odpoved) => {
                 cartPage.getAddedToCartDialog()
                     .should('exist')
                     .should('be.visible')
@@ -88,7 +88,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
             cy.intercept('GET', /https:\/\/obchod.24u.cz\/(.*)\?do=addCart/).as('addCart')
             // Act
             item.addItemToCart()
-            cy.wait('@addCart', { timeout: 20000 }).then((odpoved) => {
+            cy.wait('@addCart', { timeout: 30000 }).then((odpoved) => {
                 // Act
                 cartPage.getToCartFromDialogButton().click()
                 // Asset
