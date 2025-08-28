@@ -10,7 +10,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
     beforeEach(() => {
         // Arrange
         cy.visit('/')
-        cy.get('a[class*="CaSaveAll"]').click({ force: true })
+        cy.get('a[class*="CaSaveAll"]').click()
         // Act
         menuComponent.openCategoryPage(menuCategories.IPHONE)
     });
