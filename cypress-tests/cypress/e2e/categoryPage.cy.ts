@@ -52,6 +52,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
             cy.intercept('POST', /https:\/\/obchod.24u.cz\/p\/(.*)\?do=productForm-submit/).as('addCart')
             // Act
             item.getNameDiv().click()
+            cy.wait(2000)
             // Asset
             cy.url().should('contain', `${Cypress.env('baseUrl')}p/`)
             productDetailPage.getTitle()
