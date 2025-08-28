@@ -44,6 +44,7 @@ describe('Ověření prvků na domovské stránce', () => {
   it('Ověří zabalení vyhledávání a nepřítomnost vyhledávacího pole a tlačítka', () => {
     // Act
     menuComponent.getSearchButton().click()
+    cy.wait(1000)
     menuComponent.getSearchButton().click()
     // Asset
     menuComponent.getSearchBar().should('have.attr', 'class').and('not.contain', 'show')
