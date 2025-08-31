@@ -220,7 +220,7 @@ export default new class CartPage {
 
     //Dokončit objednávku a zkontrolovat, zda je dokončená
     finishOrderAndAssert() {
-        // Act
+        // Act 
         this.getFinishOrderButton().click()
         // Assert
         // Pokud není zaškrtnut souhlas s obchodními podmínkami, zobrazí se alert
