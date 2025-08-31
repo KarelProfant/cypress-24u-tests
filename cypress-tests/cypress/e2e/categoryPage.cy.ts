@@ -2,7 +2,7 @@ import categoryPage from "../pages/categoryPage";
 import menuComponent, { menuCategories } from "../pages/components/menuComponent";
 import categoryItemComponent from "../pages/components/categoryItemComponent"
 import productDetailPage from "../pages/productDetailPage";
-import cartPage, { OrderData } from "../pages/cartPage";
+import cartPage, { OrderData, Payments, Shipment } from "../pages/cartPage";
 import { faker, fakerCS_CZ } from '@faker-js/faker';
 import { Countries } from "../pages/registrationPage";
 
@@ -17,7 +17,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
 
     it('Zkontroluje, že je odkaz v menu na kategorii přesměrován na správný web', () => {
         cy.fixture('data.json').then((data) => {
-            // Asset
+            // Assert
             categoryPage.getTitle()
                 .should('exist')
                 .and('be.visible')
@@ -34,7 +34,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
             // Act
             item.addItemToCart()
             cy.wait('@addCart', { timeout: 120000 }).then((odpoved) => {
-                // Asset
+                // Assert
                 cartPage.getAddedToCartDialog()
                     .should('exist')
                     .should('be.visible')
@@ -53,7 +53,7 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
             // Act
             item.getNameDiv().click()
             cy.wait(2000)
-            // Asset
+            // Assert
             cy.url().should('contain', `${Cypress.env('baseUrl')}p/`)
             productDetailPage.getTitle()
                 .should('exist')
@@ -90,31 +90,10 @@ describe('Testy na vytváření objednávek ze stránky kategorie', () => {
             // Act
             item.addItemToCart()
             cy.wait('@addCart', { timeout: 120000 }).then((odpoved) => {
-                // Act
-                cartPage.getToCartFromDialogButton().click()
-                // Asset
-                cartPage.getCartTitleBox()
-                .should('have.attr', 'class')
-                .and('contain', 'active')
-                cy.url().should('eq', `${Cypress.env('baseUrl')}cart`)
-                // Act
-                cartPage.getContinueToShipmentButton().click()
-                // Asset
-                cartPage.getShipmentTitleBox()
-                .should('have.attr', 'class')
-                .and('contain', 'active')
-                cy.url().should('eq', `${Cypress.env('baseUrl')}shipment`)
-                // Act
-                cartPage.getShipmentSalesroomInput().click()
-                cartPage.getPaymentCardInput().click()
-                cartPage.getContinueToCheckoutButton().click()
-                // Asset
-                cartPage.getCheckoutTitleBox()
-                .should('have.attr', 'class')
-                .and('contain', 'active')
-                cy.url().should('eq', `${Cypress.env('baseUrl')}checkout`)
-                // Act
-                cartPage.fillOrderData(credentials)
+                cartPage.goToCartAndAssert()
+                cartPage.goToShipmentAndAssert(Shipment.DPD, Payments.AIR_BANK)
+                cartPage.goToCheckoutAndAssert(credentials)
+                cartPage.finishOrderAndAssert()
             })
         })
     });
