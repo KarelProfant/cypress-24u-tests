@@ -18,7 +18,7 @@ describe('Ověření prvků na domovské stránce', () => {
     // Arrange
     const menuCategoriesForCheck: menuCategories[] = ([
       menuCategories.AKCE,
-      menuCategories.BACK_TO_SCHOOL,
+      menuCategories.WATCH,
       menuCategories.MAC,
       menuCategories.IPAD,
       menuCategories.IPHONE])

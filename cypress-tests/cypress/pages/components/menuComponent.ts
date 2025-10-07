@@ -11,7 +11,7 @@ export default new class MenuComponent {
     getUserMenuButton = () => cy.get('div[id="menuCollapse"]').find('i[class="fa fa-user fa-lg"]')
     getCreateAccountButton = () => cy.get('div[id="ts-account-menu"]').find('a').contains('Vytvořit účet')
     getCategoryAkce = () => cy.get('a[id="ct_1400"]')
-    getCategoryBackSchool = () => cy.get('a[id="ct_1356"]')
+    getCategoryWatch = () => cy.get('a[id="ct_1295"]')
     getCategoryMac = () => cy.get('a[id="ct_1292"]')
     getCategoryIpad = () => cy.get('a[id="ct_1293"]')
     getCategoryIphone = () => cy.get('a[id="ct_1294"]')
@@ -32,8 +32,8 @@ export default new class MenuComponent {
             case menuCategories.AKCE:
                 this.getCategoryAkce().click()
                 break;
-            case menuCategories.BACK_TO_SCHOOL:
-                this.getCategoryBackSchool().click()
+            case menuCategories.WATCH:
+                this.getCategoryWatch().click()
                 break;
             case menuCategories.MAC:
                 this.getCategoryMac().click()
@@ -57,7 +57,7 @@ export default new class MenuComponent {
 
 export enum menuCategories {
   AKCE = 'Akce',
-  BACK_TO_SCHOOL = 'Back to School',
+  WATCH = 'Watch',
   MAC = 'Mac',
   IPAD = 'iPad',
   IPHONE = 'iPhone'
