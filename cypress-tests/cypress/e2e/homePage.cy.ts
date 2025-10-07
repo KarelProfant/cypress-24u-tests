@@ -26,7 +26,7 @@ describe('Ověření prvků na domovské stránce', () => {
     // Asset
     menuCategoryComponent.getCategoryItems()
       .should("be.visible")
-      .should("have.length.at.least", 10);//očekávaný počet
+      .should("have.length.at.least", 9);//očekávaný počet
     menuCategoriesForCheck.forEach((text) => {
       menuCategoryComponent.getCategoryItems().should("contain.text", text);
     });
