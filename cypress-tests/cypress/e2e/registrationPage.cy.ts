@@ -11,7 +11,7 @@ describe('Testy na registrační stránce', () => {
         menuComponent.openRegisterPage()
     });
 
-    it('Zkontroluje, že odkaz v menu směřuje na správnou URL', () => {
+    it('Zkontroluje, že odkaz v menu směřuje na správný web', () => {
         // Asset
         registrationPage.getTitle()
         .should('exist')
